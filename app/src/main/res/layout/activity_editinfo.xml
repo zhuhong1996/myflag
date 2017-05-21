@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activity_bg_gray"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        android:padding="0dp">
+
+        <ImageButton
+            android:id="@+id/back_btn"
+            android:layout_width="?attr/actionBarSize"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/toolbar_back_bg"
+            android:onClick="editInfoBackTo"
+            android:src="?attr/homeAsUpIndicator" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="修改个人信息"
+            android:textColor="@color/black"
+            android:textSize="19sp" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/head_icon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/head_icon_default"
+        android:layout_marginTop="12dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="修改头像"
+        android:textSize="17sp"
+        android:layout_marginTop="12dp"
+        android:textColor="@color/login_button_default_blue"
+        android:onClick="editHeadIcon"
+        android:background="@null"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="昵称"
+            android:textColor="@color/black"
+            android:textSize="17sp" />
+
+        <EditText
+            android:id="@+id/nick_name_edt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="陌年之夏"
+            android:textColor="@color/text_dark_gray"
+            android:textSize="17sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginTop="2dp"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="性别"
+            android:textColor="@color/black"
+            android:textSize="17sp" />
+
+        <carbon.widget.RadioGroup
+            android:id="@+id/sex_radio_group"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:paddingLeft="10dp"
+            android:orientation="horizontal">
+
+            <carbon.widget.RadioButton
+                android:id="@+id/male_rb"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/carbon_listItemHeight"
+                android:gravity="center_vertical"
+                android:text="男"
+                android:checked="true"/>
+
+            <carbon.widget.RadioButton
+                android:id="@+id/female_rb"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/carbon_listItemHeight"
+                android:gravity="center_vertical"
+                android:text="女" />
+
+        </carbon.widget.RadioGroup>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="个性签名"
+            android:textColor="@color/black"
+            android:textSize="17sp" />
+
+        <EditText
+            android:id="@+id/signature_edt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="介绍下自己吧"
+            android:paddingLeft="10dp"
+            android:textColor="@color/text_dark_gray"
+            android:textColorHint="@color/text_hint_gray"
+            android:textSize="17sp" />
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:text="提交"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:padding="8dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/login_button_bg"
+        android:onClick="editInfoPost"/>
+</LinearLayout>

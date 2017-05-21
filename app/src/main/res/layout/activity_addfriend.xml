@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activity_bg_gray"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white">
+
+        <ImageButton
+            android:id="@+id/back_btn"
+            android:layout_width="?attr/actionBarSize"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/toolbar_back_bg"
+            android:onClick="addFriendBack"
+            android:src="?attr/homeAsUpIndicator" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="添加好友"
+            android:textColor="@color/black"
+            android:textSize="19sp" />
+
+        <Button
+            android:id="@+id/addFriendSendButton"
+            android:layout_width="?attr/actionBarSize"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/toolbar_back_bg"
+            android:text="发送"
+            android:textColor="@color/login_button_default_blue"
+            android:textSize="17sp" />
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/activity_bg_gray"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/icon_img"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_margin="15dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/head_icon_default" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/addFriendNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="用户名"
+                android:textColor="@color/black"
+                android:textSize="19sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="附加信息:"
+                    android:textColor="@color/text_dark_gray"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/addFriendInformationTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:text="附加信息:"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="15dp"
+            android:gravity="center"
+            android:text="备注"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/addFriendRemarkEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,14 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="carbon_Theme.Light.NoActionBar"/>
+
+    <!-- popwidnow 显示消失动画 -->
+    <style name="popwindow_anim">
+        <item name="android:windowEnterAnimation">@anim/popupwindow_show</item>
+        <!-- 指定显示的动画xml -->
+        <item name="android:windowExitAnimation">@anim/popupwindow_hide</item>
+        <!-- 指定消失的动画xml -->
+    </style>
+
+</resources>

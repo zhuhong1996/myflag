@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="transparent">#00000000</color>
+    <color name="toolbar_back_click_bg">#dad9db</color>
+
+    <color name="edit_blue_border">#20a1b3</color>
+    <color name="login_bg">#cefaf8</color>
+    <color name="text_hint_gray">#bababa</color>
+    <color name="login_button_default_blue">#20a1b3</color>
+    <color name="login_button_pressed_blue">#1e7887</color>
+
+    <color name="activity_bg_gray">#f4f3f8</color>
+
+    <color name="tab_text_color_gray">#bababa</color>
+    <color name="tab_text_color_blue">#20a1b3</color>
+
+    <color name="text_dark_gray">#4a4a4a</color>
+
+    <color name="unread_red">#ff0000</color>
+    <color name="text_blue">#1ba9c9</color>
+
+    <color name="textcolor_gray">#666666</color>
+</resources>

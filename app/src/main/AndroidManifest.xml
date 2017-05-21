@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.sdu.myflag">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:name=".base.BaseApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/app_icon"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".activity.GuideActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".activity.MainActivity" />
+
+        <activity
+            android:name=".activity.LoginActivity"
+            android:launchMode="singleInstance" />
+
+        <activity android:name=".activity.RegisterActivity" />
+
+        <activity android:name=".activity.CreateFlagActivity" />
+
+        <activity android:name=".activity.SearchFriendActivity" />
+        <activity android:name=".activity.AddFriendActivity" />
+        <activity android:name=".activity.AddFriendMessageActivity" />
+        <activity android:name=".activity.FriendActivity" />
+        <activity android:name=".activity.EditInfoActivity" />
+        <activity android:name=".activity.MyMessageFriendActivity" />
+        <activity android:name=".activity.LookInfoActivity" />
+        <activity android:name=".activity.FriendMsgDetailActivity" />
+        <activity android:name=".activity.MyMessageSuperViseActivity" />
+        <activity android:name=".activity.SuperViseMsgDetailActivity" />
+        <activity android:name=".activity.ModifyPasswordActivity" />
+        <activity android:name=".activity.SettingActivity" />
+        <activity android:name=".activity.AboutUsActivity" />
+        <activity android:name=".activity.MySuperViseActivity" />
+        <activity android:name=".activity.SuperViseJudgeActivity" />
+        <activity android:name=".activity.SuperViseDetailActivity" />
+        <activity android:name=".activity.CommentActivity" />
+        <activity android:name=".activity.ApplySuperviseDetailActivity" />
+        <activity android:name=".activity.MyMessageApplySuperviseActivity" />
+        <activity android:name=".activity.EditHeadIconActivity" />
+    </application>
+
+</manifest>

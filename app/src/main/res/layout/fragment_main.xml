@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activity_bg_gray"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        android:padding="0dp">
+
+        <ImageView
+            android:id="@+id/main_head_icon"
+            android:layout_width="?attr/actionBarSize"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_alignParentLeft="true"
+            android:background="@color/transparent"
+            android:padding="12dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/head_icon_default" />
+
+        <TextView
+            android:id="@+id/fragment_main_nickname_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="用户名"
+            android:textColor="@color/black"
+            android:textSize="19sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/activity_bg_gray"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/toolbar_back_bg"
+                android:gravity="center"
+                android:onClick="createFlag"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/create_flag_img" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:text="新建FLAG"
+                    android:textColor="@color/black"
+                    android:textSize="19sp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:paddingBottom="8dp"
+                android:paddingLeft="16dp"
+                android:paddingTop="8dp"
+                android:text="已立FLAG"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/activity_bg_gray" />
+
+            <android.support.v4.widget.SwipeRefreshLayout
+                android:id="@+id/flag_main_swipe"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ListView
+                    android:id="@+id/fragment_main_flag_lv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:divider="@null" />
+            </android.support.v4.widget.SwipeRefreshLayout>
+        </LinearLayout>
+
+        <include layout="@layout/empty_layout" />
+    </RelativeLayout>
+</LinearLayout>

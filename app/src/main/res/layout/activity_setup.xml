@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activity_bg_gray"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        android:padding="0dp">
+
+        <ImageButton
+            android:id="@+id/back_btn"
+            android:layout_width="?attr/actionBarSize"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/toolbar_back_bg"
+            android:onClick="settingBack"
+            android:src="?attr/homeAsUpIndicator" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="设置"
+            android:textColor="@color/black"
+            android:textSize="19sp" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@null">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@color/white"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:background="@drawable/toolbar_back_bg"
+                android:onClick="modifyPassword">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="1"
+                    android:text="修改密码"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <ImageButton
+                    android:layout_width="10dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="19dp"
+                    android:background="@null"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ahead_arrow" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/activity_bg_gray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:background="@drawable/toolbar_back_bg">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="1"
+                    android:text="重置数据"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <ImageButton
+                    android:layout_width="10dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="19dp"
+                    android:background="@null"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ahead_arrow" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="@color/activity_bg_gray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:background="@drawable/toolbar_back_bg">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="1"
+                    android:text="使用帮助"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <ImageButton
+                    android:layout_width="10dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="19dp"
+                    android:background="@null"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ahead_arrow" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/activity_bg_gray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:background="@drawable/toolbar_back_bg">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="1"
+                    android:text="意见反馈"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <ImageButton
+                    android:layout_width="10dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="19dp"
+                    android:background="@null"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ahead_arrow" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/activity_bg_gray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:background="@drawable/toolbar_back_bg"
+                android:onClick="aboutUs">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="1"
+                    android:text="关于我们"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <ImageButton
+                    android:layout_width="10dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="19dp"
+                    android:background="@null"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ahead_arrow" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="@color/activity_bg_gray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:background="@drawable/toolbar_back_bg"
+                android:onClick="exitLogin">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="1"
+                    android:text="退出登录"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <ImageButton
+                    android:layout_width="10dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="19dp"
+                    android:background="@null"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ahead_arrow" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

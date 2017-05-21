@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/toolbar_back_bg"
+    android:padding="15dp">
+
+    <ImageView
+        android:id="@+id/head_icon_msg"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerVertical="true"
+        android:src="@drawable/head_icon_default" />
+
+    <ImageView
+        android:id="@+id/unread_red_img"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/unread_red_bg" />
+
+    <TextView
+        android:id="@+id/message_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="8dp"
+        android:layout_toLeftOf="@+id/read_tv"
+        android:layout_toRightOf="@+id/head_icon_msg"
+        android:ellipsize="middle"
+        android:lines="1"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <ImageView
+        android:id="@+id/right_arrow"
+        android:layout_width="15dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ahead_arrow" />
+
+    <TextView
+        android:id="@+id/read_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@+id/right_arrow"
+        android:text="[未读]"
+        android:textColor="@color/text_hint_gray"
+        android:textSize="16sp" />
+</RelativeLayout>

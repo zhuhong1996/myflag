@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activity_bg_gray"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        android:padding="0dp">
+
+        <ImageButton
+            android:id="@+id/back_btn"
+            android:layout_width="?attr/actionBarSize"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/toolbar_back_bg"
+            android:onClick="lookInfoBackTo"
+            android:src="?attr/homeAsUpIndicator" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="查看个人信息"
+            android:textColor="@color/black"
+            android:textSize="19sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_alignParentRight="true"
+            android:background="@color/transparent"
+            android:onClick="editInfo"
+            android:text="编辑"
+            android:textColor="@color/text_blue"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="昵称"
+            android:textColor="@color/black"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/nick_name_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text=""
+            android:textColor="@color/text_dark_gray"
+            android:textSize="17sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginTop="2dp"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="性别"
+            android:textColor="@color/black"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/sex_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:textColor="@color/text_dark_gray"
+            android:textSize="17sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="个性签名"
+            android:textColor="@color/black"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/info_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:textColor="@color/text_dark_gray"
+            android:textSize="17sp" />
+
+    </LinearLayout>
+</LinearLayout>
