@@ -3,7 +3,6 @@ package com.example.sdu.myflag.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,9 +14,6 @@ import com.example.sdu.myflag.R;
 import com.example.sdu.myflag.base.BaseActivity;
 import com.example.sdu.myflag.base.BaseApplication;
 import com.example.sdu.myflag.util.NetUtil;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -32,6 +28,7 @@ import okhttp3.Response;
  */
 public class EditInfoActivity extends BaseActivity {
 
+    private ImageView nicknameView,sexView,signalView;
     private EditText nickNameEdt, signatureEdt;
     private String nickName, signature, sex;
     private SharedPreferences sharedPreferences;
@@ -50,6 +47,12 @@ public class EditInfoActivity extends BaseActivity {
         Intent intent = this.getIntent();
         nickName = intent.getStringExtra("nickname");
         signature = intent.getStringExtra("info");
+
+        nicknameView=(ImageView)findViewById(R.id.nicknameView);
+        sexView=(ImageView)findViewById(R.id.sexView);
+        signalView=(ImageView)findViewById(R.id.signalView);
+
+
 
         nickNameEdt = (EditText) findViewById(R.id.nick_name_edt);
         signatureEdt = (EditText) findViewById(R.id.signature_edt);
