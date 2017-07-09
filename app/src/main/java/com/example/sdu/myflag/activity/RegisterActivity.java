@@ -1,10 +1,10 @@
 package com.example.sdu.myflag.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.view.View;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.sdu.myflag.R;
 import com.example.sdu.myflag.base.BaseActivity;
@@ -16,14 +16,11 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 import okhttp3.Response;
 
-/**
- * Created by Administrator on 2016/8/17.
- */
+
 public class RegisterActivity extends BaseActivity {
     private EditText nameEditText, passwordEditText, passwordAgainEditText, phoneNumberEditText, emailEditText, personalInformationEditText;
     private String name, password, passwordAgain, phoneNumber, email, personalInformation;
