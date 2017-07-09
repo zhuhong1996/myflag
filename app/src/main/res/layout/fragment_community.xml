@@ -1,34 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/activity_bg_gray"
     android:orientation="vertical">
 
-    <RelativeLayout
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/white">
+        android:background="@color/white"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="社区"
-            android:textColor="@color/black"
-            android:textSize="19sp" />
-    </RelativeLayout>
+        <LinearLayout
+            android:id="@+id/flag_friend_layout"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:onClick="onMainTabClick"
+            android:orientation="vertical"
+            android:padding="5dp">
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/community_swipe_layout"
+            <TextView
+                android:id="@+id/flag_friend_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Flag"
+                android:textColor="@color/tab_text_color_gray"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/clock_tv_layout"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:onClick="onCommunityTabClick"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/clock_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="打卡"
+                android:textColor="@color/tab_text_color_gray"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <com.example.sdu.myflag.widget.CustomViewPager
+        android:id="@+id/community_view_pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/activity_bg_gray"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
-        <ListView
-            android:id="@+id/community_list_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/activity_bg_gray"
-            android:divider="@color/transparent" />
-    </android.support.v4.widget.SwipeRefreshLayout>
+    </com.example.sdu.myflag.widget.CustomViewPager>
 </LinearLayout>

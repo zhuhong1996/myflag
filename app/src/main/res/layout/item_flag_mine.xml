@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:wave="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/toolbar_back_bg">
 
     <LinearLayout
@@ -28,12 +29,18 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/head_icon"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/flag_icon" />
+                <com.john.waveview.WaveView
+                    android:id="@+id/wave_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="12dp"
+                    android:background="@color/carbon_blue_100"
+                    wave:above_wave_color="@color/white"
+                    wave:blow_wave_color="@color/white"
+                    wave:progress="50"
+                    wave:wave_height="middle"
+                    wave:wave_hz="normal"
+                    wave:wave_length="middle"/>
 
             </RelativeLayout>
 
@@ -138,14 +145,4 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-
-    <ImageView
-        android:id="@+id/flag_finish_img"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="10dp"
-        android:src="@drawable/flag_finish_img"
-        android:visibility="gone"/>
 </RelativeLayout>

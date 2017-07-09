@@ -21,8 +21,12 @@ import com.example.sdu.myflag.activity.MySuperViseActivity;
 import com.example.sdu.myflag.activity.SuperViseDetailActivity;
 import com.example.sdu.myflag.bean.FlagBean;
 import com.example.sdu.myflag.fragment.MainFragment;
+import com.example.sdu.myflag.util.BaseTools;
+import com.john.waveview.WaveView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -57,51 +61,42 @@ public class FlagListAdapter extends BaseAdapter {
     public View getView(final int position, View convertView, ViewGroup parent) {
         if (mList == null)
             return null;
-        ViewHolder viewHolder;
-        if (convertView == null) {
-            viewHolder = new ViewHolder();
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_flag_mine, null);
-            viewHolder.flag = (TextView) convertView.findViewById(R.id.flag_tv);
-            viewHolder.reward = (TextView) convertView.findViewById(R.id.reward_tv);
-            viewHolder.time = (TextView) convertView.findViewById(R.id.time_tv);
-            viewHolder.watch = (TextView) convertView.findViewById(R.id.watch_tv);
-            viewHolder.teamOrNot = (TextView) convertView.findViewById(R.id.team_ornot_tv);
-            viewHolder.flag_finish_img = (ImageView) convertView.findViewById(R.id.flag_finish_img);
 
-            convertView.setTag(viewHolder);
-        } else {
-            viewHolder = (ViewHolder) convertView.getTag();
-        }
+        convertView = LayoutInflater.from(context).inflate(R.layout.item_flag_mine, null);
 
-        viewHolder.flag.setText(mList.get(position).getFlag());
+        TextView flag = (TextView) convertView.findViewById(R.id.flag_tv);
+        TextView reward = (TextView) convertView.findViewById(R.id.reward_tv);
+        TextView time = (TextView) convertView.findViewById(R.id.time_tv);
+        TextView watch = (TextView) convertView.findViewById(R.id.watch_tv);
+        TextView teamOrNot = (TextView) convertView.findViewById(R.id.team_ornot_tv);
+        WaveView waveView = (WaveView) convertView.findViewById(R.id.wave_view);
+
+       // float betweenStartToEnd = BaseTools.daysBetween(mList.get(position).getTime_begin(), mList.get(position).getTime_end());
+       // float betweenStartToCur = BaseTools.daysBetween(mList.get(position).getTime_begin(), new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
+       // int value = (int) (100 * (betweenStartToCur / betweenStartToEnd));
+        //waveView.setProgress(value > 100 ? 100 : value); //这里的参数放置一个1-100的参数   参数=100*（currentTime-startTime）/(endTime-startTime)   修改波浪的波动程度去xml文件里面修改
+
+        //waveView.
+
+        flag.setText(mList.get(position).getFlag());
         ArrayList<String> watchList = mList.get(position).getWatch_name();
         String watchStr = "";
         for (int i = 0; i < watchList.size(); i++) {
             watchStr += watchList.get(i) + " ";
         }
-        viewHolder.watch.setText(watchStr);
-        viewHolder.time.setText(mList.get(position).getTime_begin() + "  -  " + mList.get(position).getTime_end());
-        viewHolder.reward.setText(mList.get(position).getReward());
-        viewHolder.teamOrNot.setText(mList.get(position).getTeamOrNot());
+        watch.setText(watchStr);
+        time.setText(mList.get(position).getTime_begin() + "  -  " + mList.get(position).getTime_end());
+        reward.setText(mList.get(position).getReward());
+        teamOrNot.setText(mList.get(position).getTeamOrNot());
         if (mList.get(position).getIsFinish().equals("true")) {
-            viewHolder.flag_finish_img.setVisibility(View.VISIBLE);
-            if (mList.get(position).getAchieve().equals("2"))
-                viewHolder.flag_finish_img.setImageResource(R.drawable.flag_finish_img);
-            else
-                viewHolder.flag_finish_img.setImageResource(R.drawable.flag_end_img);
-        } else {
-            viewHolder.flag_finish_img.setVisibility(View.GONE);
+            if (mList.get(position).getAchieve().equals("2")) {
+                waveView.setBackgroundColor(context.getResources().getColor(R.color.carbon_green_100));
+            } else {
+                waveView.setBackgroundColor(context.getResources().getColor(R.color.carbon_red_100));
+            }
         }
+        waveView.setProgress(100);
 
         return convertView;
-    }
-
-    class ViewHolder {
-        public TextView flag;
-        public TextView time;
-        public TextView watch;
-        public TextView reward;
-        public TextView teamOrNot;
-        public ImageView flag_finish_img;
     }
 }

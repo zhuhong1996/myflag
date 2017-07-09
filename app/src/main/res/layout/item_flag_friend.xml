@@ -151,13 +151,4 @@
         </LinearLayout>
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/flag_finish_img"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="10dp"
-        android:src="@drawable/flag_finish_img"
-        android:visibility="gone" />
 </RelativeLayout>

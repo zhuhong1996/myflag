@@ -7,9 +7,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import java.util.List;
 
-/**
- * Created by Administrator on 2016/8/19.
- */
 public class SampleViewPagerAdapter extends FragmentPagerAdapter{
     private List<Fragment> fragmentList;
 
@@ -22,8 +19,8 @@ public class SampleViewPagerAdapter extends FragmentPagerAdapter{
     public int getCount() {
         return fragmentList.size();
     }
-
     @Override
+
     public Fragment getItem(int position) {
         return fragmentList.get(position);
     }

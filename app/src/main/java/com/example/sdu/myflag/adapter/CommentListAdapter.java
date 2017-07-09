@@ -1,7 +1,6 @@
 package com.example.sdu.myflag.adapter;
 
 import android.content.Context;
-import android.graphics.LightingColorFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +14,7 @@ import com.example.sdu.myflag.bean.SuperViseBriefBean;
 
 import java.util.ArrayList;
 
-/**
- * Created by Administrator on 2016/9/23.
- */
+
 public class CommentListAdapter extends BaseAdapter {
 
     private ArrayList<SuperViseBriefBean> SuperViseBriefList;

@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -14,7 +13,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -24,6 +22,7 @@ import android.widget.Toast;
 
 import com.example.sdu.myflag.R;
 import com.example.sdu.myflag.activity.MainActivity;
+import com.example.sdu.myflag.activity.MyFlagDetailActivity;
 import com.example.sdu.myflag.activity.SuperViseDetailActivity;
 import com.example.sdu.myflag.adapter.FlagListAdapter;
 import com.example.sdu.myflag.base.BaseApplication;
@@ -102,6 +101,7 @@ public class MainFragment extends BaseFragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                   // Intent intent = new Intent(MainFragment.this.getActivity(), MyFlagDetailActivity.class);
                     Intent intent = new Intent(MainFragment.this.getActivity(), SuperViseDetailActivity.class);
                     intent.putExtra("bean", list.get(position));
                     intent.putExtra("code", 3);
@@ -127,19 +127,15 @@ public class MainFragment extends BaseFragment {
             return;
         }
 
-        Date date = new Date();
-        long t = date.getTime() / 1000;
-        String time = Long.toString(t);
-        time = time.substring(time.length() - 10);
-
         GetFlagResult getFlagResult = new GetFlagResult();
 
         List<NetUtil.Param> params = new LinkedList<>();
         params.add(new NetUtil.Param("id", myId));
-        params.add(new NetUtil.Param("time", time));
+        params.add(new NetUtil.Param("time", BaseTools.getParamTime()));
 
         try {
             NetUtil.getResult(NetUtil.getMyFlagUrl, params, getFlagResult);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -192,9 +188,9 @@ public class MainFragment extends BaseFragment {
                         String achieve = js.optString("achieve");
                         String fid = js.optString("fid");
                         String id = js.optString("id");
-                        String startTime = stampToDate(js.optString("startTime"));
+                        String startTime = BaseTools.stampToDate(js.optString("startTime"));
                         long end = js.optLong("endTime");
-                        String endTime = stampToDate(end + "");
+                        String endTime = BaseTools.stampToDate(end + "");
                         String createTime = js.optString("createTime");
                         String teamOrNot = js.optString("isTeam").equals("true") ? "[团队]" : "[个人]";
                         String isFinish = "false";
@@ -207,8 +203,11 @@ public class MainFragment extends BaseFragment {
                     MainFragment.this.getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            listAdapter = new FlagListAdapter(MainFragment.this.getContext(), list);
+                            listAdapter = new FlagListAdapter(MainFragment.this.getActivity(), list);
                             listView.setAdapter(listAdapter);
+                            listAdapter.notifyDataSetChanged();
+                            listAdapter.notifyDataSetInvalidated();
+
                         }
                     });
                 } catch (JSONException e) {
@@ -217,18 +216,6 @@ public class MainFragment extends BaseFragment {
                     e.printStackTrace();
                 }
             }
-        }
-
-        /*
-        * 将时间戳转换为时间
-        */
-        public String stampToDate(String s) {
-            String res;
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            long lt = Long.valueOf(s) * 1000;
-            Date date = new Date(lt);
-            res = simpleDateFormat.format(date);
-            return res;
         }
     }
 

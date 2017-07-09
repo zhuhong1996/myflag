@@ -30,7 +30,6 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
 
     RelativeLayout messageLayout, addFriendLayout, watchLayout, settingLayout, userInfoLayout, superviseMsgLayout, apply_message_layout;
     TextView userNameTv, userIntroTv;
-    LinearLayout friendLayout;
     private String nickname, information, sex;
     int iconIndex;
     ImageView fragment_my_icon;
@@ -53,7 +52,6 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         fragment_my_icon.setImageDrawable(getResources().getDrawable(BaseApplication.HeadIcon[iconIndex]));
 
         addFriendLayout.setOnClickListener(this);
-        friendLayout.setOnClickListener(this);
         userInfoLayout.setOnClickListener(this);
         messageLayout.setOnClickListener(this);
         superviseMsgLayout.setOnClickListener(this);
@@ -67,7 +65,6 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         addFriendLayout = (RelativeLayout) mRootView.findViewById(R.id.add_friend_layout);
         userNameTv = (TextView) mRootView.findViewById(R.id.user_name_tv);
         userIntroTv = (TextView) mRootView.findViewById(R.id.user_intro_tv);
-        friendLayout = (LinearLayout) mRootView.findViewById(R.id.friend_layout);
         userInfoLayout = (RelativeLayout) mRootView.findViewById(R.id.user_info_layout);
         messageLayout = (RelativeLayout) mRootView.findViewById(R.id.message_layout);
         superviseMsgLayout = (RelativeLayout) mRootView.findViewById(R.id.supervise_message_layout);
@@ -80,12 +77,6 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.friend_layout:
-                Intent intent1 = new Intent(MyFragment.this.getActivity(), FriendActivity.class);
-                intent1.putExtra("code", 0);
-                startActivityForResult(intent1, 2);
-                break;
-
             case R.id.add_friend_layout:
                 startNewActivity(SearchFriendActivity.class);
                 break;

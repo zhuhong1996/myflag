@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/activity_bg_gray"
@@ -53,17 +54,23 @@
         android:layout_height="?attr/actionBarSize"
         android:layout_marginTop="20dp"
         android:background="@color/white"
+        android:gravity="center"
         android:orientation="horizontal">
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            app:srcCompat="@drawable/nickname"
+            android:id="@+id/nicknameView"
+            android:layout_gravity="center" />
+
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:gravity="center_vertical"
-            android:paddingLeft="20dp"
             android:text="昵称"
             android:textColor="@color/black"
-            android:textSize="17sp" />
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/nick_name_edt"
@@ -75,7 +82,7 @@
             android:paddingLeft="10dp"
             android:text="陌年之夏"
             android:textColor="@color/text_dark_gray"
-            android:textSize="17sp" />
+            android:textSize="16sp" />
 
     </LinearLayout>
 
@@ -84,17 +91,24 @@
         android:layout_height="?attr/actionBarSize"
         android:layout_marginTop="2dp"
         android:background="@color/white"
+        android:gravity="center"
         android:orientation="horizontal">
 
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:srcCompat="@drawable/sex"
+            android:id="@+id/sexView"
+            android:layout_weight="0.12" />
+
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="36dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:gravity="center_vertical"
-            android:paddingLeft="20dp"
             android:text="性别"
             android:textColor="@color/black"
-            android:textSize="17sp" />
+            android:textSize="16sp"
+            android:layout_weight="0.04" />
 
         <carbon.widget.RadioGroup
             android:id="@+id/sex_radio_group"
@@ -128,17 +142,24 @@
         android:layout_height="?attr/actionBarSize"
         android:layout_marginTop="20dp"
         android:background="@color/white"
+        android:gravity="center"
         android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:srcCompat="@drawable/signal"
+            android:id="@+id/signalView"
+            android:layout_weight="0.12" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:paddingLeft="20dp"
             android:text="个性签名"
             android:textColor="@color/black"
-            android:textSize="17sp" />
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/signature_edt"
@@ -151,7 +172,7 @@
             android:paddingLeft="10dp"
             android:textColor="@color/text_dark_gray"
             android:textColorHint="@color/text_hint_gray"
-            android:textSize="17sp" />
+            android:textSize="16sp" />
 
     </LinearLayout>
 

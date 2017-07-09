@@ -16,7 +16,7 @@
             android:layout_height="?attr/actionBarSize"
             android:layout_alignParentLeft="true"
             android:background="@drawable/toolbar_back_bg"
-            android:onClick="myMessageFriendBack"
+            android:onClick="myMessageApply"
             android:src="?attr/homeAsUpIndicator" />
 
         <TextView

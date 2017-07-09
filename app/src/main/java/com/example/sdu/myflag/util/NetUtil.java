@@ -48,6 +48,11 @@ public class NetUtil {
     public static final String getApplySuperviseUrl = "http://119.29.236.181/myflag/flag/GetApplyMyFlag";
     public static final String confirmApplySuperviseUrl = "http://119.29.236.181/myflag/flag/ConfirmApplySupervise";
     public static final String deleteFlagUrl = "http://119.29.236.181/myflag/flag/DeleteFlag";
+    public static final String createClockUrl = "http://119.29.236.181/myflag/clock/CreateClock";
+    public static final String upLoadImage = "http://119.29.236.181/myflag/clock/uploadImage";
+    public static final String getClockUrl = "http://119.29.236.181/myflag/clock/FriendsClock";
+    public static final String getImageUrl = "http://119.29.236.181/myflag/Images/ClockImage/";
+    public static final String suggestionUrl = "http://119.29.236.181/myflag/util/uploadAdvise";
 
     private NetUtil() {
         mOkHttpClient = new OkHttpClient();

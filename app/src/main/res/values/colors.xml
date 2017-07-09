@@ -19,6 +19,7 @@
 
     <color name="tab_text_color_gray">#bababa</color>
     <color name="tab_text_color_blue">#20a1b3</color>
+    <color name="tab_text_color_navigation">#53c4f7</color>
 
     <color name="text_dark_gray">#4a4a4a</color>
 

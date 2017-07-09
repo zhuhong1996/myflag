@@ -82,40 +82,8 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="2dp"
+                android:layout_height="12dp"
                 android:background="@color/activity_bg_gray" />
-
-            <LinearLayout
-                android:id="@+id/friend_layout"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@drawable/toolbar_back_bg"
-                android:gravity="center_vertical"
-                android:layout_marginTop="16dp"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginLeft="15dp"
-                    android:src="@drawable/login_userid_icon" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_weight="1"
-                    android:text="我的好友"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
-
-                <ImageView
-                    android:layout_width="10dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="20dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/ahead_arrow" />
-            </LinearLayout>
 
             <RelativeLayout
                 android:id="@+id/supervise_message_layout"
@@ -163,7 +131,7 @@
                     android:layout_height="20dp"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="15dp"
-                    android:src="@drawable/msg_icon" />
+                    android:src="@drawable/new_friends" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -171,7 +139,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@+id/msg_icon"
-                    android:text="我的好友消息"
+                    android:text="新朋友"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
@@ -202,7 +170,7 @@
                     android:layout_height="20dp"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="15dp"
-                    android:src="@drawable/msg_icon" />
+                    android:src="@drawable/new_supervise" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -210,7 +178,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@+id/apply_msg_icon"
-                    android:text="申请监督消息"
+                    android:text="新监督"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 

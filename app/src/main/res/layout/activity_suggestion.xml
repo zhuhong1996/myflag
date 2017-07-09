@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activity_bg_gray"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        android:padding="0dp">
+
+        <ImageButton
+            android:id="@+id/back_btn"
+            android:layout_width="?attr/actionBarSize"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/toolbar_back_bg"
+            android:onClick="superViseJudgeBack"
+            android:src="?attr/homeAsUpIndicator" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="意见反馈"
+            android:textColor="@color/black"
+            android:textSize="19sp" />
+
+        <TextView
+            android:id="@+id/judge_finish_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/toolbar_back_bg"
+            android:gravity="center"
+            android:onClick="judgeFinishAction"
+            android:padding="5dp"
+            android:text="发送"
+            android:textColor="@color/login_button_default_blue"
+            android:textSize="19sp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/activity_bg_gray" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/suggest_edit_text"
+            android:layout_width="0dp"
+            android:layout_height="212dp"
+            android:layout_weight="3"
+            android:background="@null"
+            android:gravity="start"
+            android:minLines="5"
+            android:padding="8dp"
+            android:textColor="@color/text_dark_gray"
+            android:textSize="14sp" />
+    </LinearLayout>
+</LinearLayout>

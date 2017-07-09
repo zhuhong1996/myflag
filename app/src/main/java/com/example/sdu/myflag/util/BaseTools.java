@@ -5,9 +5,12 @@ package com.example.sdu.myflag.util;
  */
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.ComponentName;
+import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -17,19 +20,31 @@ import android.media.ExifInterface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Environment;
+import android.provider.DocumentsContract;
+import android.provider.MediaStore;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
 import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import com.android.volley.toolbox.ImageLoader;
+import com.bumptech.glide.Glide;
+import com.example.sdu.myflag.R;
+import com.example.sdu.myflag.base.BaseApplication;
 
-/**
- * Created by wn on 2015/8/13.
- */
+import java.io.UnsupportedEncodingException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.zip.Deflater;
+
+
 public class BaseTools {
 
     public static final long ONE_DAY_TIME = 24 * 60 * 60;
@@ -214,13 +229,13 @@ public class BaseTools {
      * @param requestCode
      * @param cropImageFileName     图片剪裁成功后的缓存文件名称，如果不为空，则获取剪裁后的文件方式为：
      *                              <pre>String fileName = extras.getString("file-data");
-     *                                                           File file = this.getFileStreamPath(fileName);
-     *                                                           Uri uri = Uri.fromFile(file);</pre>
+     *                                                                                        File file = this.getFileStreamPath(fileName);
+     *                                                                                        Uri uri = Uri.fromFile(file);</pre>
      *                              如果为空，则获取剪裁后的图片方式为：
      *                              <pre>Bundle extras = data.getExtras();
-     *                                                           if (extras != null) {
-     *                                                           Bitmap photo = extras.getParcelable("data");
-     *                                                           }</pre>
+     *                                                                                        if (extras != null) {
+     *                                                                                        Bitmap photo = extras.getParcelable("data");
+     *                                                                                        }</pre>
      *                              使用的时候，建议按照文件路径（也就是传入有效的cropImageFileName）值使用，原因在于：intent在传递值的时候，对于bitmap这样的值有40kb的大小限制
      */
     public static void startCropImageActivityForResult(Activity context, Uri imageUri, boolean defaultSizeWithSource,
@@ -357,6 +372,166 @@ public class BaseTools {
             return false;
         else
             return true;
+    }
+
+    /*
+* 将时间戳转换为时间
+*/
+    public static String stampToDate(String s) {
+        String res;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        long lt = Long.valueOf(s) * 1000;
+        Date date = new Date(lt);
+        res = simpleDateFormat.format(date);
+        return res;
+    }
+
+    public static String getImageAbsolutePath(Activity context, Uri imageUri) {
+        if (context == null || imageUri == null)
+            return null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT && DocumentsContract.isDocumentUri(context, imageUri)) {
+            if (isExternalStorageDocument(imageUri)) {
+                String docId = DocumentsContract.getDocumentId(imageUri);
+                String[] split = docId.split(":");
+                String type = split[0];
+                if ("primary".equalsIgnoreCase(type)) {
+                    return Environment.getExternalStorageDirectory() + "/" + split[1];
+                }
+            } else if (isDownloadsDocument(imageUri)) {
+                String id = DocumentsContract.getDocumentId(imageUri);
+                Uri contentUri = ContentUris.withAppendedId(Uri.parse("content://downloads/public_downloads"), Long.valueOf(id));
+                return getDataColumn(context, contentUri, null, null);
+            } else if (isMediaDocument(imageUri)) {
+                String docId = DocumentsContract.getDocumentId(imageUri);
+                String[] split = docId.split(":");
+                String type = split[0];
+                Uri contentUri = null;
+                if ("image".equals(type)) {
+                    contentUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+                } else if ("video".equals(type)) {
+                    contentUri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
+                } else if ("audio".equals(type)) {
+                    contentUri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
+                }
+                String selection = MediaStore.Images.Media._ID + "=?";
+                String[] selectionArgs = new String[]{split[1]};
+                return getDataColumn(context, contentUri, selection, selectionArgs);
+            }
+        } // MediaStore (and general)
+        else if ("content".equalsIgnoreCase(imageUri.getScheme())) {
+            // Return the remote address
+            if (isGooglePhotosUri(imageUri))
+                return imageUri.getLastPathSegment();
+            return getDataColumn(context, imageUri, null, null);
+        }
+        // File
+        else if ("file".equalsIgnoreCase(imageUri.getScheme())) {
+            return imageUri.getPath();
+        }
+        return null;
+    }
+
+    public static String getDataColumn(Context context, Uri uri, String selection, String[] selectionArgs) {
+        Cursor cursor = null;
+        String column = MediaStore.Images.Media.DATA;
+        String[] projection = {column};
+        try {
+            cursor = context.getContentResolver().query(uri, projection, selection, selectionArgs, null);
+            if (cursor != null && cursor.moveToFirst()) {
+                int index = cursor.getColumnIndexOrThrow(column);
+                return cursor.getString(index);
+            }
+        } finally {
+            if (cursor != null)
+                cursor.close();
+        }
+        return null;
+    }
+
+    /**
+     * @param uri The Uri to check.
+     * @return Whether the Uri authority is ExternalStorageProvider.
+     */
+    public static boolean isExternalStorageDocument(Uri uri) {
+        return "com.android.externalstorage.documents".equals(uri.getAuthority());
+    }
+
+    /**
+     * @param uri The Uri to check.
+     * @return Whether the Uri authority is DownloadsProvider.
+     */
+    public static boolean isDownloadsDocument(Uri uri) {
+        return "com.android.providers.downloads.documents".equals(uri.getAuthority());
+    }
+
+    /**
+     * @param uri The Uri to check.
+     * @return Whether the Uri authority is MediaProvider.
+     */
+    public static boolean isMediaDocument(Uri uri) {
+        return "com.android.providers.media.documents".equals(uri.getAuthority());
+    }
+
+    /**
+     * @param uri The Uri to check.
+     * @return Whether the Uri authority is Google Photos.
+     */
+    public static boolean isGooglePhotosUri(Uri uri) {
+        return "com.google.android.apps.photos.content".equals(uri.getAuthority());
+    }
+
+    public static String getParamTime() {
+        Date date = new Date();
+        long t = date.getTime() / 1000;
+        String time = Long.toString(t);
+        return time.substring(time.length() - 10);
+    }
+
+    /*
+    volley加载图片
+     */
+    public static void loadBitmap(String imgPath, final ImageView imageView) {
+        ImageLoader imageLoader = new ImageLoader(BaseApplication.getQueues(), BaseApplication.bitmapCache);
+        ImageLoader.ImageListener imageListener = imageLoader.getImageListener(imageView,
+                R.drawable.picture_default, R.drawable.picture_default);
+        imageLoader.get(imgPath, imageListener);
+    }
+
+    /*
+    显示加载条
+     */
+    public static Dialog showLoadingDialog(Context context) {
+        Dialog dialog = new Dialog(context, R.style.progress_dialog);
+        dialog.setContentView(R.layout.item_loading_image);
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        ImageView imageView = (ImageView) dialog.findViewById(R.id.loading_image);
+        Glide.with(context).load(R.drawable.loading_image).into(imageView);
+        //Glide.with(context).load(R.drawable.loading_dialog).into(imageView);
+        return dialog;
+    }
+
+    /**
+     * 计算两个日期之间相差的天数
+     *
+     */
+    public static float daysBetween(String start, String end) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date smdate = null;
+        Date bdate = null;
+        try {
+            smdate = sdf.parse(start);
+            bdate = sdf.parse(end);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(smdate);
+        long time1 = cal.getTimeInMillis();
+        cal.setTime(bdate);
+        long time2 = cal.getTimeInMillis();
+        long between_days = (time2 - time1) / (1000 * 3600 * 24);
+
+        return Float.parseFloat(String.valueOf(between_days));
     }
 }
 
