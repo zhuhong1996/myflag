@@ -15,10 +15,14 @@ import com.example.sdu.myflag.R;
 import com.example.sdu.myflag.base.BaseActivity;
 import com.example.sdu.myflag.base.BaseApplication;
 import com.example.sdu.myflag.bean.FlagBean;
+import com.example.sdu.myflag.util.BaseTools;
 import com.example.sdu.myflag.util.NetUtil;
+import com.john.waveview.WaveView;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import okhttp3.Response;
 
@@ -27,7 +31,7 @@ import okhttp3.Response;
  */
 public class SuperViseDetailActivity extends BaseActivity {
 
-    Button judge_btn, apply_supervise_btn;
+    Button judge_btn, apply_supervise_btn, clock_btn;
     TextView supervise_detail_award_tv, supervise_detail_time_tv, supervise_member_tv, supervise_detail_flagName_tv, supervise_detail_nickName_tv,
             isTeam_tv, supervise_ing_tv;
     String fid;
@@ -35,6 +39,7 @@ public class SuperViseDetailActivity extends BaseActivity {
     FlagBean flagBean;
     String uid;
     ImageView msg_icon_img;
+    private WaveView waveView;
 
     @Override
     public int getLayoutId() {
@@ -46,6 +51,7 @@ public class SuperViseDetailActivity extends BaseActivity {
         SharedPreferences sharedPreferences = BaseApplication.getInstance().getSharedPreferences("User", Context.MODE_PRIVATE);
         uid = sharedPreferences.getString("uid", null);
 
+        waveView = (WaveView) findViewById(R.id.wave_view);
         supervise_detail_award_tv = (TextView) findViewById(R.id.supervise_detail_award_tv);
         supervise_detail_time_tv = (TextView) findViewById(R.id.supervise_detail_time_tv);
         supervise_member_tv = (TextView) findViewById(R.id.supervise_member_tv);
@@ -57,6 +63,7 @@ public class SuperViseDetailActivity extends BaseActivity {
         apply_supervise_btn = (Button) findViewById(R.id.apply_supervise_btn);
         supervise_ing_tv = (TextView) findViewById(R.id.supervise_ing_tv);
         msg_icon_img = (ImageView) findViewById(R.id.msg_icon_img);
+        clock_btn = (Button) findViewById(R.id.clock_btn);
 
         Intent intent = getIntent();
         flagBean = (FlagBean) intent.getExtras().get("bean");
@@ -66,24 +73,36 @@ public class SuperViseDetailActivity extends BaseActivity {
             {
                 judge_btn.setVisibility(View.GONE);
                 apply_supervise_btn.setVisibility(View.GONE);
-            } else {
+            } else {    // 正在监督且flag已完成
                 apply_supervise_btn.setVisibility(View.GONE);
                 supervise_ing_tv.setVisibility(View.GONE);
             }
-        } else if (code == 2) {
+        } else if (code == 2) { // 未监督状态
             judge_btn.setVisibility(View.GONE);
-            if (flagBean.getIsSupervise())
+            if (flagBean.getIsSupervise())  // 如果正在监督
                 apply_supervise_btn.setVisibility(View.GONE);
-            else
+            else    // 未监督
                 supervise_ing_tv.setVisibility(View.GONE);
-        } else {
+        } else {    // 我的flag
             judge_btn.setVisibility(View.GONE);
             apply_supervise_btn.setVisibility(View.GONE);
             supervise_ing_tv.setVisibility(View.GONE);
+            if(flagBean.getIsFinish().equals("false"))
+                clock_btn.setVisibility(View.VISIBLE);
         }
         supervise_detail_nickName_tv.setText(flagBean.getUser_name());
         supervise_detail_award_tv.setText(flagBean.getReward());
         supervise_detail_time_tv.setText(flagBean.getTime_begin() + "  -  " + flagBean.getTime_end());
+        if(flagBean.getIsFinish().equals("true") && !flagBean.getAchieve().equals("2"))
+            waveView.setBackgroundColor(getResources().getColor(R.color.carbon_red_100));
+        else if(flagBean.getIsFinish().equals("true") && flagBean.getAchieve().equals("2"))
+            waveView.setBackgroundColor(getResources().getColor(R.color.carbon_green_100));
+
+        float betweenStartToEnd = BaseTools.daysBetween(flagBean.getTime_begin(), flagBean.getTime_end());
+        float betweenStartToCur = BaseTools.daysBetween(flagBean.getTime_begin(), new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
+        int value = (int)(100 * (betweenStartToCur / betweenStartToEnd));
+        waveView.setProgress(value > 100 ? 100 : value); //这里的参数放置一个1-100的参数   参数=100*（currentTime-startTime）/(endTime-startTime)   修改波浪的波动程度去xml文件里面修改
+
         msg_icon_img.setImageDrawable(getResources().getDrawable(BaseApplication.HeadIcon[flagBean.getIconId()]));
 
         String member = "";
@@ -123,6 +142,12 @@ public class SuperViseDetailActivity extends BaseActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void clockBtnAction(View view) {
+        Intent intent = new Intent(SuperViseDetailActivity.this, MyFlagClockActivity.class);
+        intent.putExtra("fid", fid);
+        startActivity(intent);
     }
 
     class ApplySuperviseUrlCallBack implements NetUtil.CallBackForResult {
